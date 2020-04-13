@@ -1,4 +1,3 @@
-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,7 +9,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    # 'channels',
+    'channels',
     'accounts',
     'chat',
     'crispy_forms',
@@ -68,11 +67,13 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'DB1',
-        'USER': 'postgres',
+        #'ENGINE':'django.db.backends.sqlite3', 
+	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':'register', #os.path.join(BASE_DIR,'db.sqlite3'),
+        'USER':'vaishnavi',
         'PASSWORD':'bumblebee',
-        'HOST':'localhost'
+        'HOST':'localhost',
+	'PORT':'5432',
 
     }
 }
@@ -113,5 +114,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

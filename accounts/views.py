@@ -7,7 +7,7 @@ from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import register
-
+from django.contrib import messages
 
 def registerPage(request):
     # form = CreateUserForm()
@@ -22,32 +22,25 @@ def registerPage(request):
         x.save()
         print("User Successfully Created")
         return redirect("/")
-        # form = CreateUserForm(request.POST)
-        # if form.is_valid():
-        #     form.save()
-        #     user = form.cleaned_data.get('username')
-        #     messages.success(request, 'Account Successfully created for '+ user)
-        #     return redirect('chat/index')
     else:
-        # form = CreateUserForm()
         return render(request,'accounts/register.html')
 
 def home(request):
     return render(request,'accounts/dashboard.html')
 
 def loginPage(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
 
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            # login(request, user)
-            return render(request,  "chat/index.html")
+            #auth.login(request,user)
+            return redirect('chat/index/')
         else:
             messages.info(request, 'Username or Password is incorrect')
-            return redirect("/login")
+            return redirect("/")
     else:
         return render(request,'accounts/login.html')
 

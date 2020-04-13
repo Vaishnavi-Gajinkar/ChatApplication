@@ -1,0 +1,16 @@
+[0;1;32m●[0m nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: [0;1;32mactive (running)[0m since Sat 2020-04-04 12:02:13 UTC; 1 day 11h ago
+     Docs: man:nginx(8)
+  Process: 40896 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid [0;1;31m(code=exited, status=2)[0m
+  Process: 40903 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+  Process: 40902 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+ Main PID: 40910 (nginx)
+    Tasks: 2 (limit: 743)
+   CGroup: /system.slice/nginx.service
+           ├─40910 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           └─40911 nginx: worker process
+
+Apr 04 12:02:12 AzureLinuxVM systemd[1]: Starting A high performance web server and a reverse proxy server...
+Apr 04 12:02:13 AzureLinuxVM systemd[1]: nginx.service: Failed to parse PID from file /run/nginx.pid: Invalid argument
+Apr 04 12:02:13 AzureLinuxVM systemd[1]: Started A high performance web server and a reverse proxy server.
